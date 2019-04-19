@@ -3,11 +3,21 @@ import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngrediants/BurgerIngredient';
 
 const burger = (props) => {
+
+    const orderedIngredients = Object.keys(props.ingredients)
+        .map( (item, index) => {
+            // console.log("Outer", item, index, props.ingredients[item]);
+            return [...Array(props.ingredients[item])].map((v, i) => {
+                // console.log("Inner", v, i);
+                return <BurgerIngredient key={item+i} type={item} /> 
+            });
+        });
+    
+    // console.log(orderedIngredients);
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
-            <BurgerIngredient type="cheese" />
-            <BurgerIngredient type="meat" />            
+            {orderedIngredients}    
             <BurgerIngredient type="bread-bottom" />
         </div>
     );
