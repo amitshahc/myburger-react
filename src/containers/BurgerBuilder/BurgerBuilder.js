@@ -3,6 +3,7 @@ import Aux from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/OrderSummary/OrderSummary';
 
 
 class BurgerBuilder extends Component {
@@ -89,7 +90,9 @@ class BurgerBuilder extends Component {
         console.log(disabledInfo);
         return (
             <Aux>
-                <Modal />
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
+                </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
